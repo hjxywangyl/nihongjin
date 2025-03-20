@@ -7,10 +7,15 @@ from io import BytesIO
 
 # Supabase 配置
 try:
-    supabase: Client = create_client(
-        supabase_url=st.secrets["SUPABASE_URL"],
-        supabase_key=st.secrets["SUPABASE_KEY"]
-    )
+    supabase_url = st.secrets["SUPABASE_URL"]
+    supabase_key = st.secrets["SUPABASE_KEY"]
+    
+    if not supabase_url or not supabase_key:
+        st.error("错误：未找到 Supabase 配置。")
+        st.stop()
+        
+    # 初始化 Supabase 客户端
+    supabase = create_client(supabase_url, supabase_key)
     
     # 测试连接
     test = supabase.table('vocabulary').select("*").limit(1).execute()
