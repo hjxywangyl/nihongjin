@@ -6,11 +6,12 @@ import requests
 from io import BytesIO
 
 # 获取 Supabase 凭据
-supabase_url = st.secrets.get("SUPABASE_URL")
-supabase_key = st.secrets.get("SUPABASE_KEY")
-
-if not supabase_url or not supabase_key:
-    st.error("错误：未找到 Supabase 配置。请确保已设置 SUPABASE_URL 和 SUPABASE_KEY。")
+try:
+    supabase_url = st.secrets["SUPABASE_URL"]
+    supabase_key = st.secrets["SUPABASE_KEY"]
+except Exception as e:
+    st.error("错误：未找到 Supabase 配置。请确保在 Streamlit Secrets 中设置了 SUPABASE_URL 和 SUPABASE_KEY。")
+    st.error(f"详细错误：{str(e)}")
     st.stop()
 
 try:
@@ -18,6 +19,7 @@ try:
     supabase = create_client(supabase_url, supabase_key)
 except Exception as e:
     st.error("连接数据库时发生错误。请稍后再试。")
+    st.error(f"详细错误：{str(e)}")
     st.stop()
 
 # 检查数据库连接
