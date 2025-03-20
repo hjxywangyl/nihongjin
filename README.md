@@ -24,8 +24,8 @@
 
 1. 克隆仓库
 ```bash
-git clone [your-repository-url]
-cd [repository-name]
+git clone https://github.com/hjxywangyl/nihongjin.git
+cd nihongjin
 ```
 
 2. 安装依赖
@@ -54,4 +54,4 @@ streamlit run main.py
 
 ## License
 
-MIT License 
+MIT License
