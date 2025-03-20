@@ -390,7 +390,7 @@ st.markdown("""
 
 # 设置海报路径
 POSTER_DIR = "/Users/qiao/Downloads/chongqirensheng"
-POSTER_FILENAME = "BRUSH_UP_LIFE_POSTER.JPG"
+POSTER_FILENAME = "6a7346a1e0398c34cf462091b1383024.jpg"
 POSTER_BUCKET = "drama-posters"
 
 # === 界面模块 ===
@@ -591,24 +591,28 @@ def main():
 def get_poster_from_storage(drama_title):
     """从 Supabase Storage 获取海报"""
     try:
-        # 构建海报文件名，使用英文文件夹名
-        folder_name = "chongqirensheng"  # 使用英文文件夹名
-        poster_path = f"{folder_name}/{POSTER_FILENAME}"
-        
-        print(f"尝试获取海报: {poster_path}")  # 调试信息
-        
-        # 获取海报文件的公共URL
-        poster_url = supabase.storage.from_(POSTER_BUCKET).get_public_url(poster_path)
-        print(f"海报URL: {poster_url}")  # 调试信息
-        
-        # 下载海报图片
-        response = requests.get(poster_url)
-        print(f"下载状态码: {response.status_code}")  # 调试信息
-        
-        if response.status_code == 200:
-            return BytesIO(response.content)
+        # 根据剧集标题获取对应的海报
+        if drama_title == "重启人生":
+            folder_name = "chongqirensheng"
+            poster_path = f"{folder_name}/{POSTER_FILENAME}"
+            
+            print(f"尝试获取海报: {poster_path}")  # 调试信息
+            
+            # 获取海报文件的公共URL
+            poster_url = supabase.storage.from_(POSTER_BUCKET).get_public_url(poster_path)
+            print(f"海报URL: {poster_url}")  # 调试信息
+            
+            # 下载海报图片
+            response = requests.get(poster_url)
+            print(f"下载状态码: {response.status_code}")  # 调试信息
+            
+            if response.status_code == 200:
+                return BytesIO(response.content)
+            else:
+                print(f"下载失败: {response.text}")  # 调试信息
+                return None
         else:
-            print(f"下载失败: {response.text}")  # 调试信息
+            print(f"未找到剧集 {drama_title} 的海报配置")  # 调试信息
             return None
     except Exception as e:
         print(f"获取海报时出错: {str(e)}")  # 调试信息
