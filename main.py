@@ -98,6 +98,8 @@ st.markdown("""
         background-color: transparent;
         padding: 0.5rem;
         margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
     }
     
     .stTabs [data-baseweb="tab"] {
@@ -108,6 +110,8 @@ st.markdown("""
         transition: all 0.2s ease;
         background-color: rgba(255, 255, 255, 0.5);
         border-radius: 4px;
+        min-width: 150px;
+        text-align: center;
     }
     
     .stTabs [aria-selected="true"] {
@@ -116,6 +120,7 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.9);
         border-radius: 4px;
         padding: 0.5rem 1rem;
+        min-width: 150px;
     }
     
     /* 移除标签页容器的边框 */
