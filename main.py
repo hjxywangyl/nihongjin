@@ -5,11 +5,20 @@ import os
 import requests
 from io import BytesIO
 
-# 初始化 Supabase 客户端
-supabase = create_client(
-    supabase_url="https://rpvjqbmkqbovgrdagznp.supabase.co",
-    supabase_key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwdmpxYm1rcWJvdmdyZGFnem5wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzNTU5NzgsImV4cCI6MjA1NzkzMTk3OH0.EQ_Isx98jNF9oO1_5Qeyys7_YyoReCQTY4JXHHYyx1M"
-)
+# 获取 Supabase 凭据
+supabase_url = st.secrets.get("SUPABASE_URL")
+supabase_key = st.secrets.get("SUPABASE_KEY")
+
+if not supabase_url or not supabase_key:
+    st.error("错误：未找到 Supabase 配置。请确保已设置 SUPABASE_URL 和 SUPABASE_KEY。")
+    st.stop()
+
+try:
+    # 初始化 Supabase 客户端
+    supabase = create_client(supabase_url, supabase_key)
+except Exception as e:
+    st.error("连接数据库时发生错误。请稍后再试。")
+    st.stop()
 
 # 检查数据库连接
 try:
