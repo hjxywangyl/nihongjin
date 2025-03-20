@@ -63,7 +63,7 @@ st.markdown("""
     /* 全局样式 */
     .stApp {
         background-color: #000000;
-        background-image: url('https://rpvjqbmkqbovgrdagznp.supabase.co/storage/v1/object/public/drama-posters/chongqirensheng/6a7346a1e0398c34cf462091b1383024.jpg');
+        background-image: url('https://rpvjqbmkqbovgrdagznp.supabase.co/storage/v1/object/public/drama-posters/chongqirensheng/BRUSH_UP_LIFE_POSTER.JPG');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
