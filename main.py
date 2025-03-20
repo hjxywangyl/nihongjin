@@ -18,7 +18,7 @@ try:
     supabase = create_client(supabase_url, supabase_key)
     
     # 测试连接
-    test = supabase.table('vocabulary').select("*").limit(1).execute()
+    test = supabase.table('japanese_vocabulary').select("*").limit(1).execute()
     
 except Exception as e:
     st.error("数据库连接错误")
