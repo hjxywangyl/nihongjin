@@ -71,6 +71,14 @@ st.markdown("""
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     
+    /* 页面内容居中 */
+    .main > div {
+        max-width: 1000px !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        margin: 0 auto !important;
+    }
+    
     /* 主标题样式 */
     .big-font {
         font-size: 3em !important;
