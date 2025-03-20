@@ -388,11 +388,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# 设置海报路径
-POSTER_DIR = "/Users/qiao/Downloads/chongqirensheng"
-POSTER_FILENAME = "BRUSH_UP_LIFE_POSTER.JPG"
-POSTER_BUCKET = "drama-posters"
-
 # === 界面模块 ===
 def main():
     st.markdown('<p class="big-font">🌸はな胡哨背单词</p>', unsafe_allow_html=True)
