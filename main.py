@@ -589,7 +589,7 @@ def get_poster_from_storage(drama_title):
         # 根据剧集标题获取对应的海报
         if drama_title == "重启人生":
             # 直接使用完整的公共URL
-            poster_url = "https://rpvjqbmkqbovgrdagznp.supabase.co/storage/v1/object/public/drama-posters/chongqirensheng/6a7346a1e0398c34cf462091b1383024.jpg"
+            poster_url = "https://rpvjqbmkqbovgrdagznp.supabase.co/storage/v1/object/public/drama-posters/chongqirensheng/BRUSH_UP_LIFE_POSTER.JPG"
             
             print(f"尝试获取海报: {poster_url}")  # 调试信息
             
