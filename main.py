@@ -5,21 +5,25 @@ import os
 import requests
 from io import BytesIO
 
-# 获取 Supabase 凭据
+# Supabase 配置
 try:
-    supabase_url = st.secrets["SUPABASE_URL"]
-    supabase_key = st.secrets["SUPABASE_KEY"]
+    supabase: Client = create_client(
+        supabase_url=st.secrets["SUPABASE_URL"],
+        supabase_key=st.secrets["SUPABASE_KEY"],
+        options={
+            "schema": "public",
+            "headers": {"X-Client-Info": "streamlit-nihongjin"},
+            "autoRefreshToken": True,
+            "persistSession": True
+        }
+    )
+    
+    # 测试连接
+    test = supabase.table('vocabulary').select("*").limit(1).execute()
+    
 except Exception as e:
-    st.error("错误：未找到 Supabase 配置。请确保在 Streamlit Secrets 中设置了 SUPABASE_URL 和 SUPABASE_KEY。")
-    st.error(f"详细错误：{str(e)}")
-    st.stop()
-
-try:
-    # 初始化 Supabase 客户端
-    supabase = create_client(supabase_url, supabase_key)
-except Exception as e:
-    st.error("连接数据库时发生错误。请稍后再试。")
-    st.error(f"详细错误：{str(e)}")
+    st.error("数据库连接错误")
+    st.error(f"错误详情：{str(e)}")
     st.stop()
 
 # 检查数据库连接
