@@ -9,13 +9,7 @@ from io import BytesIO
 try:
     supabase: Client = create_client(
         supabase_url=st.secrets["SUPABASE_URL"],
-        supabase_key=st.secrets["SUPABASE_KEY"],
-        options={
-            "schema": "public",
-            "headers": {"X-Client-Info": "streamlit-nihongjin"},
-            "autoRefreshToken": True,
-            "persistSession": True
-        }
+        supabase_key=st.secrets["SUPABASE_KEY"]
     )
     
     # 测试连接
