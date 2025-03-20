@@ -1,5 +1,5 @@
 import streamlit as st
-from supabase_py import create_client, Client
+from supabase import create_client, Client
 import traceback
 import os
 import requests
